@@ -1,0 +1,124 @@
+<style>
+
+
+.supplier-search-box{
+    /* background: url(images/trans-supplier-search-box.png) repeat top left; */
+    width: auto;
+    min-height: 280px;
+    height: auto;
+    margin-top: 10px;
+    left: 20%;
+    right: 20%;
+    padding: 40px 70px 20px 70px;
+
+}
+ </style>
+
+<div class="container-fluid">
+  
+  <div class="row">
+	  <div class="col-md-2"></div>
+	  <div class="col-md-8">
+	  
+	                            <form class="search-form clearfix">
+	                                <h3>Search our database for an ICT supplier you can trust</h3>
+	                                <div class="form-row">
+	                                    <div class="row">
+	                                        <div class="col-md-6">
+	                                            <div class="search-widget">
+	                                                <input type="text" id="businessNameOrNumber" ng-model="search.name"name="businessNameOrNumber" class="form-control" placeholder="QAssure no., business name or trading name">
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-6" ng-init="search.category=optionList[0]">
+	                                            <select id="capabilities" name="capabilities" ng-model="search.category" class="form-control"                           
+	                                            ng-options ="option for option in optionList" ></select>
+	                                        </div>
+	                                        
+	                                    </div>
+	                                    <div class="row">&nbsp;&nbsp;</div>
+	                                    
+	                                    <div class="row">
+	                                        
+	                                        <div class="col-md-5"></div>
+	                                        <div class="col-md-2">
+	                                            <button class="btn btn-mini search pull-right" style="background-color:white;color:black" ng-click="doSearch()"><span class="glyphicon glyphicon-search"></span> Search</button>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </form>
+	   </div>
+  </div>
+  <div ng-show="searchResult">
+  
+	  <div class="row">
+		
+			<div class="col-md-2"></div>
+	  		<div class="col-md-8">
+				<!-- 	<div class="row">
+						<div class="col-md-4" ng-repeat="res in searchResult">
+						
+							<div class="panel panel-primary">
+							
+								<div class="panel-heading">
+								
+									{{res._source.CDContractSummary}} <br/>
+						 	 		
+								</div>
+								
+								<div class="panel-body">
+								
+								<img src="" alt="logo" />
+								
+						 	 		{{res._source.OriginalExpiryDate}}
+								
+									<div class="btn-container" style="display:block">
+				                             
+				                        <a class="btn btn-sm btn-primary" ui-sref="viewProfile">View profile</a>
+				                     
+				                     </div>
+								
+								</div>
+							</div>
+						 </div>
+					</div>
+					 -->
+					
+	
+  <uib-accordion close-others="true">
+  
+  
+	<div ng-repeat ="res in searchResult">	
+	<br/>
+	
+		    <div uib-accordion-group class="panel-primary">
+		    
+				<uib-accordion-heading>
+				     
+				     {{res._source.companyName}}
+				      <i ng-show="c$index" class="pull-right glyphicon glyphicon-chevron-down" ng-click="c$index=!c$index" ></i>
+				      <i ng-show="!c$index" class="pull-right glyphicon glyphicon-chevron-up" ng-click="c$index=!c$index">
+					</i>
+				     
+			      </uib-accordion-heading>	
+		    
+		     <label><b>Contact Info:</b> </label> {{res._source.CONTACT}} <br/>  
+		     
+		     <label><b>Website URL:</b></label> {{res._source.URL}}
+		     
+		      <a class="btn btn-mini btn-primary" ng-click="open(res)">View Profile</a>
+		      
+		      
+		    </div>
+    </div>
+      
+  </uib-accordion>
+</div>
+					
+			</div>
+		</div>
+  
+  	</div>
+  
+  
+  
+  

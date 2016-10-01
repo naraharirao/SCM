@@ -1,0 +1,356 @@
+<html><head><style>
+
+iframe {
+  height:80%;
+    width:100%;
+    border:0;
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+ */
+    filter: black; /* IE6-9 */
+	  -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	  -webkit-backface-visibility: hidden;  /* Fix for transition flickering */
+}
+
+.supplier-search-box{
+    position: absolute;
+    background: url(images/trans-supplier-search-box.png) repeat top left;
+    width: auto;
+    min-height: 280px;
+    height: auto;
+    top: 50%;
+    margin-top: -40px;
+    left: 20%;
+    right: 20%;
+    padding: 40px 70px 20px 70px;
+
+}
+
+</style>
+<script src="../../bower_components/jquery/dist/jquery.js"></script>  
+</head>
+<body>
+
+<!-- 
+<ui-gmap-google-map class="feature map" center='{ latitude: 21, longitude: 23 }' zoom='2'></ui-gmap-google-map>
+ -->
+
+  <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3023.6752502007657!2d-73.992009!3d40.725165!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259851c1e9037%3A0x74407071825a96a4!2sCBGB!5e0!3m2!1sen!2sus!4v1395419817211"></iframe> -->
+
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAiQ0LtQWgwE1uUKpaaCl18Jf57AWhEKn4"></script>
+  
+  <div class="supplier-search-container">
+   <div id="map"></div>   
+  
+  
+  <div class="supplier-search-box">
+                            <form name="" method="get" action="/supplier/find" class="search-form clearfix">
+                                <h1>Search our database for an ICT supplier you can trust</h1>
+                                <div class="form-row">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="search-widget">
+                                                <input type="text" id="businessNameOrNumber" name="businessNameOrNumber" class="form-control" placeholder="QAssure no., business name or trading name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select id="capabilities" name="capabilities" class="form-control"><option value="">All products and services</option><option value="1">Components</option><option value="2">Desktop</option><option value="3">Facsimile</option><option value="4">Mainframe</option><option value="5">Midrange and Servers</option><option value="6">Printed Circuit Boards</option><option value="7">Hubs, Routers and Switches</option><option value="8">LAN/WAN/MAN Data Communication Equipment</option><option value="9">Line, Trans-missioning and Broadcasting Equipment</option><option value="10">PABX System</option><option value="11">Premises Cabling and Cabling Equipment</option><option value="12">Radio Equipment</option><option value="13">Satellite Equipment</option><option value="14">Printers</option><option value="15">Semi-conductors</option><option value="16">Smart Cards</option><option value="17">Storage Devices</option><option value="18">Videoconferencing Equipment</option><option value="19">Wireless Communications Equipment - Data</option><option value="20">Wireless Communications Equipment - Voice</option><option value="21">Hardware Market - Other</option><option value="22">Maintenance/Support</option><option value="23">Preventative Maintenance Services</option><option value="24">Remedial Maintenance Services</option><option value="25">Case, Software Development Tools</option><option value="26">Communications, Networking and Middle-ware</option><option value="27">Database and Database Administration</option><option value="28">Diagnostic Software Tools</option><option value="29">Human Computer Interface</option><option value="30">Network, System and Application Management</option><option value="31">Operating System</option><option value="32">Programming Language</option><option value="33">Security Management</option><option value="34">Transaction Processing Monitor</option><option value="35">System Software - Other</option><option value="36">HR Management</option><option value="37">Intranet/Internet Related</option><option value="38">Modeling, Analysis and Decision Support</option><option value="39">Multimedia Presentation</option><option value="40">Office Automation</option><option value="41">Application Software - Other</option><option value="42">Developed Software</option><option value="43">Web Design and Development</option><option value="44">Developed Solutions</option><option value="45">Web Services</option><option value="46">Modifications</option><option value="47">Help Desk Services</option><option value="48">Maintenance/Support</option><option value="49">Packaged Software</option><option value="50">Project Services</option><option value="51">Recruitment Services</option><option value="52">Contracting Services</option><option value="53">ICT Security and Data Encryption</option><option value="54">Programming</option><option value="55">Project Management</option><option value="56">System Analysis</option><option value="57">Software Training</option><option value="58">Audits</option><option value="59">Consulting - Information</option><option value="60">Disaster Recovery</option><option value="61">Project Management</option><option value="62">Risk Management Services</option><option value="63">Business Network and Strategic Alliance Facilitation</option><option value="64">Communication Technology Consulting - Telecommunication</option><option value="65">ICT Facilities Management</option><option value="66">Telecommunications Facilities Management</option><option value="67">System Integration</option><option value="68">Content/Information Provider</option><option value="69">Provider Equipment on Customer Premises</option><option value="70">Infrastructure Provider</option><option value="71">Radio Services</option><option value="72">Satellite Services</option><option value="73">Service/Access Provider - Mobile Data</option><option value="74">Service/Access Provider - Mobile Voice</option><option value="75">Service/Access Provider - Terrestrial Data</option><option value="76">Service/Access Provider - Terrestrial Voice</option><option value="77">Telecommunications - Other</option><option value="78">Filtering Services</option><option value="79">Hosting Services</option><option value="80">Internet Services</option><option value="81">Remote Access Services</option><option value="82">Search Engine Registration Services</option><option value="83">Internet Domain Name Services, incl. Registration</option><option value="84">Data Conversion and Modification</option></select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="search-widget">
+                                                <input type="text" id="gitcNumber" name="gitcNumber" class="form-control" placeholder="GITC number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-location">
+                                                    <span><input type="text" id="location_googleLocation" name="location[googleLocation]" class="form-control location-field" placeholder="Type a location" value="" autocomplete="off"></span><input type="hidden" id="location_googleLocationLatitude" name="location[googleLocationLatitude]" class="location_googleLocationLatitude" value="13.0401945"><input type="hidden" id="location_googleLocationLongitude" name="location[googleLocationLongitude]" class="location_googleLocationLongitude" value="80.2153889">
+                                                <a href="#" id="clear-location">clear location</a>
+                                            </div>
+                                            <div class="form-distance">
+                                                <select id="distance" name="distance" class="form-control"><option value="5">5 km</option><option value="25">25 km</option><option value="300">300 km</option></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-default search pull-right" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+  
+  
+  
+  </div>
+  </body>
+  <script>
+
+  function MapErrorException() {}
+
+  var GMap = {
+      markers: [],
+      map: null,
+      activeItem: null,
+      activePin: null,
+      setActiveItem: function($obj) {
+          GMap.changePinColour();
+
+          if (GMap.activeItem !== null) {
+              if (GMap.activeItem.data('id') !== $obj.data('id')) {
+                  GMap.activeItem.find('.btn-container').slideUp();
+                  GMap.activeItem.removeClass('active');
+              }
+          }
+
+          $(".supplier-search-results").animate({scrollTop: $obj.position().top });
+
+          $obj.addClass('active');
+          $obj.find('.btn-container').slideDown();
+
+          GMap.activeItem = $obj;
+      },
+      changePinColour: function() {
+          if (GMap.activePin !== null) {
+              GMap.activePin.styleIcon.set('color', '502e84');
+          }
+      },
+      highlightPin: function(i) {
+          GMap.changePinColour();
+
+          google.maps.event.trigger(GMap.markers[i], "click");
+      },
+      loadMap: function(lat, lng) {
+          lat = lat || false;
+          lng = lng || false;
+
+          var mapOptions = {
+              panControl: false,
+              zoomControl: false,
+              mapTypeControl: false,
+              streetViewControl: false
+          };
+
+          if (lat && lng) {
+              mapOptions.center = new google.maps.LatLng(lat, lng);
+              mapOptions.zoom = 15;
+          } else {
+              //Center of Brisbane
+              mapOptions.center = new google.maps.LatLng(-27.469605, 153.017213);
+              mapOptions.zoom = 4;
+          }
+
+          mapOptions.styles = [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}]
+
+          var mapElement = document.getElementById('map');
+
+          GMap.map = new google.maps.Map(mapElement, mapOptions);
+
+          
+          GMap.onLoadComplete(GMap.map);
+      },
+      addMarkerListener: function(marker, i) {
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                  marker.styleIcon.set('color', 'a31456');
+
+                  GMap.map.panTo(this.getPosition());
+
+                  var $target = $('.supplier-search-results ul li[data-id="' + i + '"]');
+                  GMap.setActiveItem($target);
+
+                  GMap.activePin = marker;
+              }
+          })(marker, i));
+      },
+      init: function() {
+          $('.supplier-search-results ul li').on('click', function() {
+              GMap.setActiveItem($(this));
+              GMap.highlightPin($(this).data('id'));
+          });
+      },
+      onLoadComplete: function(map) {}
+  };
+
+  var GGeocoder = {
+      geocoder: null,
+      city: null,
+      autoComplete: null,
+      $locationFieldWrapper: null,
+      $locationLat: null,
+      $locationLng: null,
+      $clearField: null,
+      options: {},
+      $locationField: "",
+      onBlur: function($obj) {
+          if ($obj.val() == '') {
+              GGeocoder.resetLocationSearch();
+          }
+      },
+      onPlaceChanged:function() {
+          var place = GGeocoder.autoComplete.getPlace();
+          if (!place.geometry) {
+              return;
+          }
+
+          GGeocoder.$locationField.val(place.name);
+          GGeocoder.$locationLat.val(place.geometry.location.lat());
+          GGeocoder.$locationLng.val(place.geometry.location.lng());
+      },
+      resetLocationSearch: function() {
+          GGeocoder.$locationField.val('');
+          GGeocoder.$locationLat.val('');
+          GGeocoder.$locationLng.val('');
+      },
+      removeLoading: function() {
+          GGeocoder.$locationField.parents('.form-location').removeClass('location-loading');
+      },
+      addLoading: function() {
+          GGeocoder.$locationField.parents('.form-location').addClass('location-loading');
+      },
+      load: function() {
+
+          GMap.loadMap();
+
+          GGeocoder.addLoading();
+
+          // Try HTML5 geolocation
+          try {
+              if(navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(function(position) {
+                      var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                      GGeocoder.geocoder = new google.maps.Geocoder();
+
+                      GGeocoder.geocoder.geocode({'latLng': latlng}, function(results, status) {
+                          if (status == google.maps.GeocoderStatus.OK) {
+                              if (results[0]) {
+                                  try {
+                                      GGeocoder.city = results[0].address_components[1].long_name;
+                                  } catch(e) {
+                                      alert("No results found");
+                                  }
+
+                                  if (GGeocoder.city.length) {
+                                      GGeocoder.$locationField.val(GGeocoder.city);
+                                      GGeocoder.$locationLat.val(position.coords.latitude);
+                                      GGeocoder.$locationLng.val(position.coords.longitude);
+
+                                      GMap.loadMap();
+                                      //GMap.loadMap(position.coords.latitude, position.coords.longitude)
+
+                                      GGeocoder.removeLoading();
+                                  }
+                              } else {
+                                  throw new MapErrorException();
+                              }
+                          } else {
+                              throw new MapErrorException();
+                          }
+                      });
+                  }, function() {
+                      GGeocoder.removeLoading();
+                      GMap.loadMap();
+                  });
+              } else {
+                  GGeocoder.removeLoading();
+                  GMap.loadMap();
+              }
+          } catch(e) {
+              GGeocoder.removeLoading();
+              GMap.loadMap();
+          }
+      },
+
+      init: function(getCurrentLocation) {
+          this.$locationLat           = $('#location_googleLocationLatitude');
+          this.$locationLng           = $('#location_googleLocationLongitude');
+          this.$clearField            = $('#clear-location');
+          this.$locationField         = $('#location_googleLocation');
+
+          //Google maps country auto complete drop-down
+          this.autoComplete = new google.maps.places.Autocomplete(this.$locationField.get(0), this.options);
+
+          $(document).on('blur', this.$locationField, function() {
+              GGeocoder.onBlur($(this));
+          });
+
+          google.maps.event.addListener(GGeocoder.autoComplete, 'place_changed', function () {
+              GGeocoder.onPlaceChanged();
+          });
+
+          GGeocoder.$clearField.on('click', function() {
+              GGeocoder.resetLocationSearch();
+          });
+
+          if (getCurrentLocation) {
+              GGeocoder.load();
+          }
+      }
+  };
+
+  var SearchAnimation = {
+      $searchContainer: null,
+      $locationBar: null,
+      $refineSearchBox: null,
+      $refineSearchClick: null,
+      activeClass: 'minimised',
+      $mapContainer: null,
+      loadLocationBar: function() {
+          this.$locationBar.animate({ 'right': '0' }, 500);
+          this.$mapContainer.animate({ 'width': '75%' }, 500);
+      },
+      toggleRefineSearch: function() {
+          var distanceToMove;
+          if (SearchAnimation.$refineSearchBox.hasClass('minimised')) {
+              distanceToMove = (SearchAnimation.$refineSearchBox.position().left - 40);
+              SearchAnimation.$refineSearchBox.animate({ 'left': distanceToMove+'px' }, 100, function() {
+                  $(this).find('.tab').hide();
+                  $(this).find('.tab-close').show();
+                  SearchAnimation.$refineSearchBox.animate({ 'left': '10px' }, 500, function() {
+                      $(this).removeClass('minimised');
+                  });
+              });
+          } else {
+              distanceToMove = (SearchAnimation.$refineSearchBox.outerWidth() + 40) * -1;
+              SearchAnimation.$refineSearchBox.animate({ 'left': distanceToMove+'px' }, 500, function() {
+                  $(this).addClass('minimised');
+                  $(this).find('.tab').show();
+                  $(this).find('.tab-close').hide();
+                  SearchAnimation.$refineSearchBox.animate({ 'left': SearchAnimation.$refineSearchBox.outerWidth() * -1 }, 100);
+              });
+          }
+      },
+      init: function() {
+          this.$searchContainer = $('.supplier-search-container');
+          this.$locationBar = $('.supplier-search-results');
+          this.$mapContainer = $('#map');
+          this.$refineSearchBox = $('.supplier-search-box');
+          this.$refineSearchClick = this.$refineSearchBox.find('.tab');
+
+          if ($(window).width() > 767) {
+              this.loadLocationBar();
+          }
+
+          this.$refineSearchClick.on('click', function() {
+             SearchAnimation.toggleRefineSearch();
+          });
+
+          this.$refineSearchBox.find('.tab-close').on('click', function() {
+              SearchAnimation.toggleRefineSearch();
+          });
+      }
+  };
+
+  $(function() {
+      var getCurrentLocation;
+
+      GMap.init();
+
+                      getCurrentLocation = true;
+      
+      GGeocoder.init(getCurrentLocation);
+  });
+
+  
+  </script>
+  </html>

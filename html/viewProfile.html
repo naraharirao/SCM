@@ -1,0 +1,165 @@
+
+<style>
+.angular-google-map-container { height: 400px; }
+
+.supplier-search-box{
+    position: absolute;
+    background: url(images/trans-supplier-search-box.png) repeat top left;
+    width: auto;
+    min-height: 280px;
+    height: auto;
+    top: 50%;
+    margin-top: -70px;
+    left: 20%;
+    right: 20%;
+    padding: 40px 70px 20px 70px;
+
+}
+.supplier-search-results {
+    background-color: #f9f8f8;
+    overflow-y: auto;
+    border-left: 5px solid white;	
+   }
+   
+   .supplier-search-results li {
+    background-color: #eeeeee;
+    padding: 15px 15px 15px 20px;
+    border-bottom: 1px solid #502e84;
+    color: #666666;
+    font-size: 16px;
+   }
+   
+   .supplier-search-results li.active{ background-color: white;
+    color: #a71e5e;
+}
+   .btn-container {
+    display: none;
+    margin-top: 15px;
+}
+   .modal-footer {
+    padding: 15px;
+    text-align: right;
+   border-top: 0px solid #e5e5e5; 
+    }
+    label{
+    font-weight:bold;
+    }
+    img{
+        vertical-align: top;
+    }
+</style>
+
+
+ 		<div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Supplier Details</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+           
+           <div class="col-md-1"></div>
+           <div class="col-md-10">
+           	<div class="row">
+           	
+           		<div class="col-md-6">
+           		
+           			<label>Company Name :</label> &nbsp;{{items._source.companyName}}
+           		
+           		</div>
+           	
+           		<div class="col-md-6">
+           		
+           			
+           		<label>Company URL :</label> &nbsp; 	{{items._source.URL}}
+           		</div>
+           	
+           	
+           	</div>
+           <div class="row">&nbsp;</div>
+           
+           
+           	<div class="row">
+           	
+           		<div class="col-md-6">
+           		
+           			<label>Component Name:</label> &nbsp; {{items._source["ComponentName"]}}
+           		
+           		</div>
+           	
+           		<div class="col-md-6">
+           		
+           		<label>CONTACT:</label> &nbsp; {{items._source.CONTACT}}
+           		
+           		
+           		</div>
+           	
+           	
+           	</div>
+           <div class="row">&nbsp;</div>
+           
+           
+           	<div class="row">
+           	
+           		<div class="col-md-6">
+           		
+           			<label>Country:</label> &nbsp;	{{items._source.Country}}
+           		
+           		</div>
+           	
+           		<div class="col-md-6">
+           		
+           			<label>Order Fullfillment Date:</label> &nbsp; {{items._source["order fulfilment date"]}}
+           		
+           		</div>
+           	
+           	
+           	</div>
+           	
+           	 <div class="row">&nbsp;</div>
+           
+           	
+           <div class="row">
+           
+           	
+           		<div class="col-md-6">
+           		
+           			
+           		<label>No Of Orders:</label> &nbsp; {{items._source["no of orders"]}}
+           		
+           		</div>
+
+           	
+           		<div class="col-md-6">
+           		<label>Supplier Risks :</label> &nbsp;
+           			
+           		
+           		<div ng-if="items._Risk_score >=4 && items._Risk_score <=5">
+           			 &nbsp;<img src="images/hapy.jpg" width="20px" height="20px">
+           		
+           		</div>
+           		<div ng-if="items._Risk_score >=2 && items._Risk_score <4">
+           				 &nbsp;<img src="images/neutral.jpg" width="20px" height="20px">
+           		
+           		</div>
+           		<div ng-if="items._Risk_score >=1 && items._Risk_score<2">
+           				 &nbsp;<img src="images/sad.jpg" width="20px" height="20px">
+           		
+           		</div>
+              <!-- }
+              } -->
+           	
+           	
+           	</div>
+           <div class="row">&nbsp;</div>
+           
+      	  </div>
+        </div>
+        
+        
+        <div class="modal-footer">
+            <button class="btn btn-warning btn-mini" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+
+
+
+
+

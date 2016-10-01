@@ -1,0 +1,83 @@
+
+<style>
+.angular-google-map-container { height: 400px; }
+
+.supplier-search-box{
+    position: absolute;
+    background: url(images/trans-supplier-search-box.png) repeat top left;
+    width: auto;
+    min-height: 280px;
+    height: auto;
+    top: 50%;
+    margin-top: -70px;
+    left: 20%;
+    right: 20%;
+    padding: 40px 70px 20px 70px;
+
+}
+.supplier-search-results {
+    background-color: #f9f8f8;
+    overflow-y: auto;
+    border-left: 5px solid white;	
+   }
+   
+   .supplier-search-results li {
+    background-color: #eeeeee;
+    padding: 15px 15px 15px 20px;
+    border-bottom: 1px solid #502e84;
+    color: #666666;
+    font-size: 16px;
+   }
+   
+   .supplier-search-results li.active{ background-color: white;
+    color: #a71e5e;
+}
+   .btn-container {
+    display: none;
+    margin-top: 15px;
+}
+   
+</style>
+
+
+<div class="row">
+	
+	<div class="col-md-12">
+		
+		<div class="row">
+			<div class="col-md-4" ng-repeat="res in searchResult">
+			
+				<div class="panel panel-primary">
+				
+					<div class="panel-heading">
+					
+						{{res._source.CDContractSummary}} <br/>
+			 	 		
+					</div>
+					
+					<div class="panel-body">
+					
+					<img src="" alt="logo" />
+					
+			 	 		{{res._source.OriginalExpiryDate}}
+					
+						<div class="btn-container" style="display:block">
+	                             
+	                        <a class="btn btn-sm btn-primary" ui-sref="viewProfile">View profiles</a>
+	                     
+	                     </div>
+					
+					</div>
+					
+				
+				</div>
+			
+			 
+			 </div>
+		</div>
+	</div>
+</div>
+
+
+
+
