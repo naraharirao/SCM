@@ -4,7 +4,7 @@ var t,xx,w,ww,markers;app.controller("graphController",function($scope,$http,sea
 	
 	w=$scope.searchResult=searchService.getSearchData();
 
-	$http.post("http://search-vendors-3athlqwdyn25kyc6sjhglygg2u.us-west-2.es.amazonaws.com/index3/type/_search?size=10").then(function(resp){
+	$http.post("http://search-vendors-3athlqwdyn25kyc6sjhglygg2u.us-west-2.es.amazonaws.com/index4/type/_search?size=5").then(function(resp){
 		
 		
 		w=ww=resp.data.hits.hits;

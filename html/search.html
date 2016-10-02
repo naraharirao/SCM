@@ -24,27 +24,22 @@
 	                                <h3>Search our database for an ICT supplier you can trust</h3>
 	                                <div class="form-row">
 	                                    <div class="row">
-	                                        <div class="col-md-6">
-	                                            <div class="search-widget">
-	                                                <input type="text" id="businessNameOrNumber" ng-model="search.name"name="businessNameOrNumber" class="form-control" placeholder="QAssure no., business name or trading name">
-	                                            </div>
-	                                        </div>
 	                                        <div class="col-md-6" ng-init="search.category=optionList[0]">
 	                                            <select id="capabilities" name="capabilities" ng-model="search.category" class="form-control"                           
 	                                            ng-options ="option for option in optionList" ></select>
 	                                        </div>
 	                                        
+	                                        <div class="col-md-6">
+	                                            <button class="btn btn-mini search" style="background-color:white;color:black" ng-click="doSearch()"><span class="glyphicon glyphicon-search"></span> Search</button>
+	                                        </div>
+	                                        
+	                                        </div>
+	                                        
+	                                        
 	                                    </div>
 	                                    <div class="row">&nbsp;&nbsp;</div>
 	                                    
-	                                    <div class="row">
-	                                        
-	                                        <div class="col-md-5"></div>
-	                                        <div class="col-md-2">
-	                                            <button class="btn btn-mini search pull-right" style="background-color:white;color:black" ng-click="doSearch()"><span class="glyphicon glyphicon-search"></span> Search</button>
-	                                        </div>
-	                                    </div>
-	                                </div>
+	                                    	
 	                            </form>
 	   </div>
   </div>

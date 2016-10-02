@@ -10,10 +10,7 @@ app.factory("searchService",function($http){
 		var searchObj1=
 		{ "query":
 	    { "filtered":
-	        { "query":
-	            { "query_string":
-	                { "query": searchObj.name.toString() }
-	            },
+	        { 
 	            "filter": {
 	                "term":{"Component Name":searchObj.category.toLowerCase()}
 	                }
@@ -22,7 +19,7 @@ app.factory("searchService",function($http){
 	                
 	}
 		
-		return $http.post("http://search-vendors-3athlqwdyn25kyc6sjhglygg2u.us-west-2.es.amazonaws.com/index4/type/_search?size=200",searchObj1).then(function(resp){
+		return $http.post("http://search-vendors-3athlqwdyn25kyc6sjhglygg2u.us-west-2.es.amazonaws.com/index4/type/_search?size=800",searchObj1).then(function(resp){
 			
 			
 			obj.setSearchData(resp.data.hits.hits);
